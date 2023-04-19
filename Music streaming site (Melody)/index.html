@@ -9,6 +9,9 @@
     <title>Melody</title>
 </head>
 <body>
+    <div id="preloader">
+        <img src="img/Melodypreloader.gif">
+    </div>
 <header>
     <div class="menu_side">
         <ul>
@@ -41,9 +44,16 @@
                 <li>MY LIBRARY</li>
             </ul>
             <div class="search">
-                <i class="bi bi-search"></i>
-                <input type="text" placeholder="Search Music...">
-            </div>
+                <div class="search-input">
+                  <a href="" target="_blank" hidden></a>
+                  <i id="icon"  class="bi bi-search"></i>
+                  <input type="text" id="input-search"     placeholder="Search Music...">
+                  <ul class="autocom-box">
+                    <!-- here list are inserted from javascript -->
+                  </ul>
+                </div>
+              </div>
+              <ul class="login_signup"><li>Login/Signup</li></ul>
             
         </nav>
         <div class="content">
@@ -189,40 +199,195 @@
                     <i id="right_scrolls" class="bi bi-arrow-right-short"></i>
                 </div>
             </div>
-            <div class="item">
-                <li>
-                    <img src="img/arjit.jpg" alt="Arjit Singh" title="Arjit Singh">
-                </li>
-                <li>
-                    <img src="img/alan.jpg" alt="Alan Walker" title="Alan Walker">
-                </li>
-                <li>
-                    <img src="img/atif.jpg" alt="Atif Aslam" title="Atif Aslam">
-                </li>
-                <li>
-                    <img src="img/sonu.jpg" alt="Sonu Nigam" title="Sonu Nigam">
-                </li>
-                <li>
-                    <img src="img/mankirt.jpg" alt="Mankirt Aulakh" title="Mankirt Aulakh">
-                </li>
-                <li>
-                    <img src="img/sharry.jpg" alt="Sharry Maan" title="Sharry Maan">
-                </li>
-                <li>
-                    <img src="img/guru.jpg" alt="Guru RAndawa" title="Guru Randawa">
-                </li>
-                <li>
-                    <img src="img/neha.jpg" alt="Neha Kakker" title="Neha Kakker">
-                </li>
-                <li>
-                    <img src="img/justin-bieber-lede.jpg" alt="Justin Bieber" title="Justin Bieber">
-                </li>
-                <li>
-                    <img src="img/honey.jpg" alt="Honey Singh" title="Honey Singh">
-                </li>
+     <div class="item">
+        <li>
+        <div class ="card">
+            <div class="cardcontent">
+                <div class="behind">
+                    <div class="behindcontent">
+                        <img src="img/arjit.jpg">
+                    </div>
+                  </div>
+                <div class="front">
+                    <div class="title">
+                      <p class="title">
+                        <strong>Arijit 
+                            Singh</strong>
+                      </p>
+                    </div>
+                </div>
             </div>
         </div>
+        </li>
+
+
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/alan.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Alan Walker</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/atif.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Atif 
+                                 Aslam</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/sonu.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Sonu Nigam</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/honey.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Honey Singh</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/guru.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Guru Randhawa</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/neha.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Neha Kakkar</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/justin-bieber-lede.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Justin Bieber</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/sharry.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Sharry Maan</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class ="card">
+                <div class="cardcontent">
+                    <div class="behind">
+                        <div class="behindcontent">
+                            <img src="img/mankirt.jpg">
+                        </div>
+                      </div>
+                    <div class="front">
+                        <div class="title">
+                          <p class="title">
+                            <strong>Mankirt Aulakh</strong>
+                          </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
     </div>
+</div>
+</div>
+
 
 
     <div class="master_play">
@@ -243,6 +408,7 @@
         </div>
     </div>
 </header>
+    <script src="suggestions.js"></script>
     <script src="app.js"></script>
 </body>
 
