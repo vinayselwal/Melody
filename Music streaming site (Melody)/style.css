@@ -194,6 +194,7 @@ header .master_play .bar input{
    cursor: pointer;
    z-index: 99999999;
    transition: 3s linear;
+   /* transition: 0.000000000000001s linear; */
    opacity: 0;
 }
 header .master_play .vol{
@@ -218,13 +219,14 @@ header .master_play .vol input{
     cursor: pointer;
     z-index: 99999999;
     transition: 3s linear;
+    /* transition:  0.000000000000001s linear; */
     opacity: 0;
  }
 
  header .master_play .vol .vol_bar{
     position: absolute;
     background: #36e2ec;
-    width: 0%;
+    width: 100%;
     height: 100%;
     top: 0;
     transition: 1s linear;
@@ -235,7 +237,7 @@ header .master_play .vol input{
     height: 5px;
     background: #36e2ec;
     border-radius: 50%;
-    left: 0%;
+    left: 100%;
     top: -1px;
     transition: 1s linear;
  }
@@ -298,14 +300,19 @@ header .master_play .vol input{
    left: 0;
    border-radius: 20px;
  }
+
  header .song_side nav .search{
-   position: relative;
-   width: 40%;
+   position: absolute;
+   width: 60%;
    padding: 1px 10px;
    border-radius: 20px;
    color: gray;
+
+   margin-bottom: 3.4%;
+   margin-left: 25%;
+
  }
- header .song_side nav .search::before{
+ /* header .song_side nav .search::before{
      content: '';
    position: absolute;
    width: 100%;
@@ -314,7 +321,9 @@ header .master_play .vol input{
    background: rgb(184, 184, 184,.1);
    backdrop-filter: blur(5px);
    z-index: -1;
- }
+ } */
+
+
  header .song_side nav .search .bi{
     font-size: 13px;
     padding: 3px 0px 0px 10px;
@@ -327,6 +336,9 @@ header .master_play .vol input{
     color: #fff;
     font-size: 12px;
  }
+
+
+
  header .song_side .content {
      width:90%;
      height: 30%;
@@ -335,6 +347,14 @@ header .master_play .vol input{
      /* border: 1px solid #fff; */
      padding-top: 20px;
  }
+
+ .search-input{
+   position: fixed;
+   border-radius: 20px;
+   background: rgb(184, 184, 184,.1);
+   margin-bottom: 20px;
+ }
+
  
 .home{
    color: #0b1320;
@@ -402,7 +422,7 @@ header .master_play .vol input{
 
  header .song_side .popular_song .pop_song {
      width: 100%;
-     height: 150px;
+     height: 120px;
      margin-top: 15px;
      display: flex;
      overflow-x: auto;
@@ -413,7 +433,7 @@ header .master_play .vol input{
  }
  header .song_side .popular_song .pop_song li{
      min-width: 100px;
-     height: 140px;
+     height: 120px;
      list-style-type: none;
      margin-right: 10px;
      transition: .3s linear;
@@ -456,7 +476,7 @@ header .master_play .vol input{
 
  header .song_side .popular_artists {
     width: 90%;
-    height: auto;
+    height: 130px;
     /* border: 1px solid #fff; */
     margin: auto;
     margin-top: 15px;
@@ -476,7 +496,7 @@ header .song_side .popular_artists .h4 .bi:hover{
 }
 header .song_side .popular_artists .item{
   width: 100%;
-  height: auto;
+  height: 100px;
   margin-top: 10px;
   display: flex;
   overflow-x: auto;
@@ -488,8 +508,8 @@ header .song_side .popular_artists .item::-webkit-scrollbar{
 header .song_side .popular_artists .item li{
  list-style-type: none;
  position: relative;
- min-width: 60px;
- height: 60px;
+ min-width: 80px;
+ height: 90px;
  /* background-color: #fff; */
  border-radius: 50%;
  margin-right: 20px;
@@ -498,7 +518,7 @@ header .song_side .popular_artists .item li{
 header .song_side .popular_artists .item li img{
  width: 100%;
  height: 100%;
- border-radius: 50%;
+ /* border-radius: 50%; */
  position: absolute;
 }
 .content{
@@ -519,3 +539,152 @@ header .song_side .popular_artists .item li img{
    }
 }
 
+
+.card {
+  overflow: visible;
+  width: 85px;
+  height: 90px;
+}
+
+.cardcontent {
+  width: 85px;
+  height: 90px;
+  transform-style: preserve-3d;
+  transition: transform 300ms;
+  box-shadow: 0px 0px 10px 1px #000000ee;
+  border-radius: 5px;
+}
+.card:hover .cardcontent {
+  transform: rotateY(180deg);
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+.front, .behind {
+  background-color: #151515;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+  overflow: hidden;
+} 
+.behind {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.behind::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 80px;
+  height: 160%;
+ 
+}
+
+.behindcontent {
+  position: absolute;
+  width: 99%;
+  height: 99%;
+  background-color: #151515;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+.front {
+  transform: rotateY(180deg);
+  color: white;
+  text-align: center;
+}
+.title {
+  font-size: 12px;
+  max-width: 100%;
+  padding: 2px;
+  display: flex;
+  margin-top: 11px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: space-between;
+  font-family: Georgia;
+}
+/* .behindcontent img{
+  height: 99%;
+  width: 99%;
+} */
+
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(27, 26, 26, 0.8);
+  margin-bottom: 20px;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* .front::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 160px;
+  height: 10%;
+  background: linear-gradient(180deg, transparent, #edcbba, #7c6a60, #b3a097, #c18263, transparent); 
+  animation: rotation_481 5000ms ;
+} */
+.front {
+ background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+ border-radius: 20px;
+ transition: all .3s;
+}
+
+.behind {
+ background-color: #1a1a1a;
+ transition: all .2s;
+}
+
+.behind:hover {
+ transform: scale(0.98);
+ border-radius: 20px;
+}
+
+.front:hover {
+ box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.30);
+}
+
+.autocom-box{
+   padding-left: 32px;
+   flex-direction: column;
+}
+
+.search-input.active .autocom-box li{
+   display: block;
+ }
+ .autocom-box li:hover{
+   background: #a99999;
+ }
+
+.login_signup{
+   display: flex;
+   margin-right: 200px;
+   background-color: #111727;
+   box-shadow: 5px 0px 2px #090f1f;
+   color: #fff;
+}

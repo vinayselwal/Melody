@@ -5,77 +5,78 @@ const music = new Audio('vande.mp3');
 const songs = [
     {
         id:"1",
-        songName: `Dil Da Dimaag <br>`,
+        songName: `Dil Da Dimaag`,
         songArtist:`<div class="subtitle">Sharrry Maan</div>`,
         poster: "img/1.jpg",
     },
     {
         id:"2",
-        songName: `College <br>`,
+        songName: `College`,
         songArtist:`<div class="subtitle">Mankirt Aulakh</div>`,
         poster: "img/2.jpg",
     },
     {
         id:"3",
-        songName: `Agar Tum Sath Ho <br>`,
+        songName: `Agar Tum Sath Ho`,
         songArtist:`<div class="subtitle">Tamashaa</div>`,
         poster: "img/3.jpg",
     },
     {
         id:"4",
-        songName: `Suna Hai <br>`,
+        songName: `Suna Hai`,
         songArtist:`<div class="subtitle">Neha Kakker</div>`,
         poster: "img/4.jpg",
     },
     {
         id:"5",
-        songName: `Duniya <br>`,
+        songName: `Duniya`,
         songArtist:`<div class="subtitle">Luka Chuppi</div>`,
         poster: "img/5.jpg",
     },
     {
         id:"6",
-        songName: `Lagdi Lahore Di <br>`,
+        songName: `Lagdi Lahore Di`,
         songArtist:`<div class="subtitle">Street Dancer 3D</div>`,
         poster: "img/6.jpg",
     },
     {
         id:"7",
-        songName: `Baarishein <br>`,
+        songName: `Baarishein`,
         songArtist:`<div class="subtitle">Atif Aslam</div>`,
         poster: "img/7.jpg",
     },
     {
         id:"8",
-        songName: `Vaaste <br>`,
+        songName: `Vaaste`,
         songArtist:`<div class="subtitle">Dhvani Bhanushali</div>`,
         poster: "img/8.jpg",
     },
     {
         id:"9",
-        songName: `Blank space <br>`,
+        songName: `Blank space`,
         songArtist:`<div class="subtitle">Taylor Swift</div>`,
         poster: "img/9.jpg",
     },
     {
         id:"10",
-        songName: `Faded <br>`,
+        songName: `Faded`,
         songArtist:`<div class="subtitle">Alan Walker</div>`, 
         poster: "img/10.jpg",
     },
     {
         id:"11",
-        songName: `Perfect  <br>`,
+        songName: `Perfect`,
         songArtist:`<div class="subtitle">Ed Sheeran</div>`,
         poster: "img/11.jpg",
     },
     {
         id:"12",
-        songName: `Stay <br>`,
+        songName: `Stay`,
         songArtist:`<div class="subtitle">Justin Bieber</div>`,
         poster: "img/12.jpg",
     },
 ]
+
 
 Array.from(document.getElementsByClassName('songItem')).forEach((element, i)=>{
     element.getElementsByTagName('img')[0].src = songs[i].poster;
@@ -92,13 +93,12 @@ masterPlay.addEventListener('click',()=>{
         poster_master_play.classList.add('rotate');
         masterPlay.classList.remove('bi-play-fill');
         masterPlay.classList.add('bi-pause-fill');
-        wave.classList.add('active2');
+       
     } else {
         music.pause();
         poster_master_play.classList.remove('rotate');
         masterPlay.classList.add('bi-play-fill');
         masterPlay.classList.remove('bi-pause-fill');
-        wave.classList.remove('active2');
     }
 } )
 
@@ -150,8 +150,6 @@ Array.from(document.getElementsByClassName('playListPlay')).forEach((element)=>{
             poster_master_play.classList.remove('rotate');
             wave.classList.remove('active2');
         })
-        makeAllBackgrounds();
-        Array.from(document.getElementsByClassName('songItem'))[`${index-1}`].style.background = "rgb(105, 105, 170, .1)";
     })
 })
 
@@ -253,11 +251,10 @@ back.addEventListener('click', ()=>{
     })
     makeAllPlays()
 
-    document.getElementById(`${index}`).classList.remove('bi-play-fill');
-    document.getElementById(`${index}`).classList.add('bi-pause-fill');
+    document.getElementById(`${index}`).classList.remove('bi-play-circle-fill');
+    document.getElementById(`${index}`).classList.add('bi-pause-circle-fill');
     document.getElementById(`${index}`).classList.add('rotate');
-    makeAllBackgrounds();
-    Array.from(document.getElementsByClassName('songItem'))[`${index-1}`].style.background = "rgb(105, 105, 170, .1)";
+    
     
 })
 next.addEventListener('click', ()=>{
@@ -283,11 +280,9 @@ next.addEventListener('click', ()=>{
     })
     makeAllPlays()
 
-    document.getElementById(`${index}`).classList.remove('bi-play-fill');
-    document.getElementById(`${index}`).classList.add('bi-pause-fill');
+    document.getElementById(`${index}`).classList.remove('bi-play-circle-fill');
+    document.getElementById(`${index}`).classList.add('bi-pause-circle-fill');
     document.getElementById(`${index}`).classList.add('rotate');
-    makeAllBackgrounds();
-    Array.from(document.getElementsByClassName('songItem'))[`${index-1}`].style.background = "rgb(105, 105, 170, .1)";
     
 })
 
@@ -314,3 +309,83 @@ left_scrolls.addEventListener('click', ()=>{
 right_scrolls.addEventListener('click', ()=>{
     item.scrollLeft += 330;
 })
+
+const searchWrapper = document.querySelector(".search-input");
+const inputBox = searchWrapper.querySelector("input");
+const suggBox = searchWrapper.querySelector(".autocom-box");
+const icon = searchWrapper.querySelector("#icon");
+
+// if user press any key and release
+inputBox.onkeyup= (e)=>{
+    let userData = e.target.value; //user enetered data
+    if(userData !==""){
+
+        var index = suggestions.indexOf(userData);
+        let emptyArray = [];
+        
+        emptyArray = suggestions.filter((data)=>{
+            //filtering array value and user characters to lowercase and return only those words which are start with user enetered chars
+            return data.toLocaleLowerCase().startsWith(userData.toLocaleLowerCase());
+        });
+        emptyArray = emptyArray.map((data)=>{
+            // passing return data inside li tag
+            return data = `<li>${data}</li>`;
+        });
+        searchWrapper.classList.add("active"); //show autocomplete box
+        showSuggestions(emptyArray);
+        let allList = suggBox.querySelectorAll("li");
+        for (let i = 0; i < allList.length; i++) {
+            //adding onclick attribute in all li tag
+            allList[i].setAttribute("onclick", "select(this)");
+        }
+    }
+    else{
+        showSuggestions([]);
+    }
+
+}
+
+function select(element){
+    let selectData = element.textContent;
+    inputBox.value = selectData;
+    icon.addEventListener('click', ()=>{
+        index =suggestions.indexOf(selectData);
+        index++;
+        music.src = `audio/${index}.mp3`;
+        poster_master_play.src =`img/${index}.jpg`;
+        music.play();
+        let song_title = songs.filter((ele)=>{
+            return ele.id == index;
+        })
+    
+        song_title.forEach(ele =>{
+            let {songName} = ele;
+            title.innerHTML = songName;
+        })
+        song_title.forEach(ele =>{
+            let {songArtist} = ele;
+            subtitle.innerHTML = songArtist;
+        })
+        makeAllPlays()
+        document.getElementById(`${index}`).classList.remove('bi-play-fill');
+        document.getElementById(`${index}`).classList.add('bi-pause-fill');
+        document.getElementById(`${index}`).classList.add('rotate');
+    })
+    searchWrapper.classList.remove("active");
+}
+
+window.addEventListener('load', function(){
+    var loader = document.getElementById('preloader');
+    loader.style.display = 'none';
+  });
+
+function showSuggestions(list){
+    let listData;
+    if(!list.length && inputBox.value!=""){
+        userValue = inputBox.value;
+        listData = `<li>${userValue}</li>`;
+    }else{
+      listData = list.join('');
+    } 
+    suggBox.innerHTML = listData;
+}
